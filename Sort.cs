@@ -135,7 +135,7 @@ namespace Algorithms
 
         private static void MergeSortHelper<T>(IList<T> list, int start, int end, bool isDescending = false) where T : IComparable<T>
         {
-            if(start < end)
+            if (start < end)
             {
                 int middle = start + (end - start) / 2;
 

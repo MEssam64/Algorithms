@@ -11,8 +11,8 @@ namespace Algorithms
 
         public Node(T val, Node<T> next)
         {
-            Val = val;
-            Next = next;
+            this.Val = val;
+            this.Next = next;
         }
 
         public Node(T val) : this(val, null) { }

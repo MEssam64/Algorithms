@@ -7,9 +7,9 @@ namespace Algorithms
 {
     class LinkedList<T> : IEnumerable<T>
     {
-        Node<T> header = null;
-        Node<T> lastNode = null;
-        int count = 0;
+        private Node<T> header = null;
+        private Node<T> lastNode = null;
+        private int count = 0;
 
         public LinkedList()
         {
@@ -18,8 +18,16 @@ namespace Algorithms
 
         public LinkedList(T item)
         {
-            header = new Node<T>(item);
-            lastNode = header;
+            this.header = new Node<T>(item);
+            this.lastNode = this.header;
+        }
+
+        public LinkedList(IEnumerable<T> list)
+        {
+            foreach (T item in list)
+            {
+                AddLast(item);
+            }
         }
 
         public Node<T> FindAtIndex(int index)
@@ -78,11 +86,11 @@ namespace Algorithms
             CheckIndex(index);
             if (count == 0)
                 throw new Exception("List is already empty");
-            if(index == count)
+            if (index == count)
                 throw new Exception("Index couldn't be equal to count");
 
             Node<T> node;
-            if(index == 0)
+            if (index == 0)
             {
                 node = header;
                 header = header.Next;
@@ -115,9 +123,9 @@ namespace Algorithms
 
         private bool CheckIndex(int index)
         {
-            if(index < 0)
+            if (index < 0)
                 throw new Exception("Index couldn't be negative");
-            if(index > count)
+            if (index > count)
                 throw new Exception("Index must be less than or equal total count");
             return true;
 
@@ -126,7 +134,7 @@ namespace Algorithms
         public IEnumerator<T> GetEnumerator()
         {
             Node<T> node = header;
-            while(node != null)
+            while (node != null)
             {
                 yield return node.Val;
                 node = node.Next;
